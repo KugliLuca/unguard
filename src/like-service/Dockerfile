@@ -35,4 +35,4 @@ RUN php /usr/bin/composer dump-autoload
 
 RUN php /usr/bin/composer clear-cache
 
-CMD php artisan --env=local make:database && php artisan migrate:fresh --force && php -S 0.0.0.0:8000 -t public
+CMD php -S 0.0.0.0:8000 -t public
