@@ -66,7 +66,7 @@ This document explains how to build and run Unguard locally inside Kubernetes us
 
 ### 🔥 Cleanup
 
-Run `skaffold delete` with the chosen profile used to start unguard to clean up the deployed resources.
+Run `skaffold delete` with the chosen profile used to start unguard to clean up the deployed resources1.
 
 ```sh
 skaffold delete [-p <profile>]
