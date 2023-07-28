@@ -1,7 +1,7 @@
 # ![Unguard Logo](docs/images/logo/unguard-logo-red-small.png) Unguard
 
 **Unguard** (🇦🇹 [ˈʊnˌɡuːat] like disquieting, 🇫🇷 [ãˈɡard] like the fencing command) is an **insecure** cloud-native
-microservices demo application. It consists of eight app services, a load generator, and two databases. Unguard
+microservices demo application. It consists of nine app services, a load generator, and two databases. Unguard
 encompasses vulnerabilities like server-side request forgery (SSRF), Command/SQL injection, JWT key confusion,
 remote code execution and many more.
 
