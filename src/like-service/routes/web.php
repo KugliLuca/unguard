@@ -1,5 +1,20 @@
 <?php
 
+
+/*Copyright 2023 Dynatrace LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.*/
+
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -15,13 +30,6 @@ use Illuminate\Http\Request;
 |
 */
 
-include (__DIR__.'/api.php');
-
-
-Route::get('/like-service', function () {
-    return view('welcome');
-});
-
 Route::get('/like-service/like-count/{postId}', function (Request $request){
     $likeController = new LikeController();
     return $likeController->getLikeCountAndState($request);
@@ -30,10 +38,6 @@ Route::get('/like-service/like-count/{postId}', function (Request $request){
 Route::post('/like-service/like-delete', function (Request $request){
     $likeController = new LikeController();
     return $likeController->removeLike($request);
-});
-
-Route::get('/like-service/ping', function (){
-    return "pong";
 });
 
 include (__DIR__ . '/../app/Http/Controllers/LikeController.php');

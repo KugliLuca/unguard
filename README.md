@@ -1,7 +1,7 @@
 # ![Unguard Logo](docs/images/logo/unguard-logo-red-small.png) Unguard
 
 **Unguard** (🇦🇹 [ˈʊnˌɡuːat] like disquieting, 🇫🇷 [ãˈɡard] like the fencing command) is an **insecure** cloud-native
-microservices demo application. It consists of eight app services, a load generator, and two databases. Unguard
+microservices demo application. It consists of nine app services, a load generator, and two databases. Unguard
 encompasses vulnerabilities like server-side request forgery (SSRF), Command/SQL injection, JWT key confusion,
 remote code execution and many more.
 
@@ -29,13 +29,14 @@ Unguard is composed of eight microservices written in different languages that t
 | [frontend](./src/frontend)                                 | Node.js Express | default         | Serves HTML to the user to interact with the application.                                                                                   |
 | [ad-service](./src/ad-service)                             | .NET 5          | default         | Provide CRUD operation for images and serves a HTML page which displays an image like an ad.                                                |
 | [microblog-service](./src/microblog-service)               | Java Spring     | default         | Serves a REST API for the frontend and saves data into redis (explicitly calls vulnerable functions of the jackson-databind library 2.9.9). |
+| [like-service](./src/like-service)                         | PHP Laravel     | default         | Serves REST API for liking, unliking and getting the like count of posts; vulnerable to SQL injection attacks                               |
 | [proxy-service](./src/proxy-service)                       | Java Spring     | unguard-proxy   | Serves REST API for proxying requests from frontend (vulnerable to SSRF; no sanitization on the entered URL).                               |
 | [profile-service](./src/profile-service)                   | Java Spring     | default         | Serves REST API for updating biography information in a H2 database; vulnerable to SQL injection attacks                                    |
 | [membership-service](./src/membership-service)             | .NET 7          | default         | Serves REST API for updating user memberships in a MariaDB; vulnerable to SQL injection attacks                                             |
 | [user-auth-service](./src/user-auth-service)               | Node.js Express | default         | Serves REST API for authenticating users with JWT tokens (vulnerable to JWT key confusion).                                                 |
 | [status-service](./src/status-service)                     | Go              | unguard-status  | Vulnerable server that uses the Kubernetes API from within a pod to get current deployment information                                      |
 | jaeger                                                     |                 | default         | The [Jaeger](https://www.jaegertracing.io/) stack for distributed tracing.                                                                  |
-| mariadb                                                    |                 | unguard-mariadb | Relational database that holds user and token data.                                                                                         |
+| mariadb                                                    |                 | unguard-mariadb | Relational database that holds user, like and token data.                                                                                   |
 | redis                                                      |                 | default         | Key-value store that holds all user data (except authentication-related stuff).                                                             |
 | [user-simulator](./src/user-simulator)                     | Node.js Element | default         | Creates synthetic user traffic by simulating an Unguard user using a real browser. Acts as a load generator.                                |
 | [malicious-load-generator](./src/malicious-load-generator) |                 | default         | Malicious load generator that makes CMD, JNDI, and SQL injections.                                                                          |
